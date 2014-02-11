@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @feature.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @feature.description %>
+</p>
+
+<p>
+  <b>Attachments:</b>
+  <%= @feature.attachments %>
+</p>
+
+<p>
+  <b>Stakeholders:</b>
+  <%= @feature.stakeholders %>
+</p>
+
+<p>
+  <b>Email recipients:</b>
+  <%= @feature.email_recipients %>
+</p>
+
+<p>
+  <b>Resources:</b>
+  <%= @feature.resources %>
+</p>
+
+
+<%= link_to 'Edit', edit_feature_path(@feature) %> |
+<%= link_to 'Back', features_path %>

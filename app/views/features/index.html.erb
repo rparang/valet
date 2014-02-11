@@ -1,0 +1,35 @@
+<h1>Listing features</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Attachments</th>
+    <th>Stakeholders</th>
+    <th>Email recipients</th>
+    <th>Resources</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% if @features %>
+    <% @features.each do |feature| %>
+      <tr>
+        <td><%= feature.title %></td>
+        <td><%= feature.description %></td>
+        <td><%= feature.attachments %></td>
+        <td><%= feature.stakeholders %></td>
+        <td><%= feature.email_recipients %></td>
+        <td><%= feature.resources %></td>
+        <td><%= link_to 'Show', feature %></td>
+        <td><%= link_to 'Edit', edit_feature_path(feature) %></td>
+        <td><%= link_to 'Destroy', feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Feature', new_feature_path %>
