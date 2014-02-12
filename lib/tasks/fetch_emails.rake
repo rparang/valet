@@ -3,7 +3,6 @@ task :fetch_emails => :environment do
   retrieve_emails
 end
 
-
 def retrieve_emails
   Mail.defaults do
     delivery_method(:smtp, {  :address              => "smtp.gmail.com",
@@ -26,8 +25,8 @@ def retrieve_emails
 
   puts "Fetching emails..."
 
-  #emails = Mail.find(keys: ['NOT','SEEN']) #Fetch emails marked as unread; will mark as read once fetched
-  emails = Mail.all                       #Fetch all emails
+  emails = Mail.find(keys: ['NOT','SEEN']) #Fetch emails marked as unread; will mark as read once fetched
+  #emails = Mail.all                       #Fetch all emails
   puts "Fetched #{emails.length} emails"
   emails.each do |e|
     #puts "Delivering emails..."    
@@ -44,25 +43,39 @@ def retrieve_emails
         unless user.following?(feature) == true
           user.follow!(feature)
           puts "#{feature.title} followed by #{user.email}"
+          #Email feature to existing user w/ new relationship
         end
       else
         user = User.create!(:name => name, :email => email, :email_display_name => name, :email_formatted => format)
         puts "User created: #{user.email}"
         user.follow!(feature)
         puts "#{feature.title} followed by #{user.email}"
+        #Email feature to new user w/ new relationship
+        deliver_email(user.email_formatted)
+        puts "Sending email..."
       end
 
     end
   end
 end
 
-def deliver_email(email)
+def deliver_email(email_address)
   feature = Feature.first
+  #mail = Mail.new
 
-  Mail.deliver do
-         to "#{email.to[0]}"
+  #mail.add_file(Valet::Application.assets.find_asset('rails.png').pathname.to_s)
+
+  mail = Mail.new do
        from "Valet <featurevalet@gmail.com>"
+         to "#{email_address}"
     subject "Valet: #{feature.title}"
-       body "Title: #{feature.title}\n\nDescription: #{feature.description}\n\nEmail: #{email}"
+       # body "Title: #{feature.title}\n\nDescription: #{feature.description}"
+   add_file Valet::Application.assets.find_asset('rails.png').pathname.to_s
+       html_part do
+         content_type 'text/html; charset=UTF-8'
+         body "Title: #{feature.title}\n\nDescription: #{feature.description}"
+       end
   end
+
+  mail.deliver!
 end

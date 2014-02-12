@@ -17,7 +17,7 @@
     <% @features.each do |feature| %>
       <tr>
         <td><%= feature.title %></td>
-        <td><%= feature.description %></td>
+        <td><%= raw feature.description %></td>
         <td><%= feature.attachments %></td>
         <td><%= feature.stakeholders %></td>
         <td><%= feature.email_recipients %></td>
