@@ -5,9 +5,7 @@
     <th>Title</th>
     <th>Description</th>
     <th>Attachments</th>
-    <th>Stakeholders</th>
-    <th>Email recipients</th>
-    <th>Resources</th>
+    <th>Links</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,10 +16,24 @@
       <tr>
         <td><%= feature.title %></td>
         <td><%= raw feature.description %></td>
-        <td><%= feature.attachments %></td>
-        <td><%= feature.stakeholders %></td>
-        <td><%= feature.email_recipients %></td>
-        <td><%= feature.resources %></td>
+        <td>
+            <table>
+            <tr>
+            <% feature.attachments.each do |a| %>
+                <td><%= a.name %></td>
+            <% end %>
+            </tr>
+            </table>
+        </td>
+        <td>
+            <table>
+            <tr>
+            <% feature.links.each do |l| %>
+                <td><%= l.name %></td>
+            <% end %>
+            </tr>
+            </table>
+        </td>
         <td><%= link_to 'Show', feature %></td>
         <td><%= link_to 'Edit', edit_feature_path(feature) %></td>
         <td><%= link_to 'Destroy', feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>

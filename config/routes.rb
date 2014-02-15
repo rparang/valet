@@ -5,5 +5,7 @@ Valet::Application.routes.draw do
   resources :users
   resources :features
   resources :relationships, :only => [:create, :destroy]
+  resources :links
+  resources :attachments
 
 end

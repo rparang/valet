@@ -1,35 +1,25 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @feature.title %>
-</p>
+<h1><%= @feature.title %></h1>
 
-<p>
-  <b>Description:</b>
-  <%= @feature.description %>
-</p>
+<%= @feature.description %>
 
-<p>
-  <b>Attachments:</b>
-  <%= @feature.attachments %>
-</p>
+<h2>Attachments (<%= @feature.attachments.count %>)</h2>
+<ul>
+  <% @feature.attachments.each do |a| %>
+    <li><%= a.name %></li>
+  <% end %>
+</ul>
 
-<p>
-  <b>Stakeholders:</b>
-  <%= @feature.stakeholders %>
-</p>
+<h2>Subscribers (<%= @feature.users.count %>)</h2>
+<ul>
+  <% @feature.users.each do |u| %>
+    <li><%= u.email %></li>
+  <% end %>
+</ul>
 
-<p>
-  <b>Email recipients:</b>
-  <%= @feature.email_recipients %>
-</p>
-
-<p>
-  <b>Resources:</b>
-  <%= @feature.resources %>
-</p>
-
-
-<%= link_to 'Edit', edit_feature_path(@feature) %> |
-<%= link_to 'Back', features_path %>
+<h2>Resources (<%= @feature.links.count %>)</h2>
+<ul>
+  <% @feature.links.each do |l| %>
+    <li><%= l.name %></li>
+  <% end %>
+</ul>
