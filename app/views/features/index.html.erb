@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Title</th>
+    <th>Code</th>
     <th>Description</th>
     <th>Attachments</th>
     <th>Links</th>
@@ -15,6 +16,7 @@
     <% @features.each do |feature| %>
       <tr>
         <td><%= feature.title %></td>
+        <td><%= feature.code %></td>
         <td><%= raw feature.description %></td>
         <td>
             <table>

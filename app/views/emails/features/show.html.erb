@@ -1,8 +1,7 @@
 
 <h1><%= @feature.title %></h1>
-<p><%= @feature.code %></p>
 
-<%= raw @feature.description %>
+<%= @feature.description %>
 
 <h2>Subscribers (<%= @feature.users.count %>)</h2>
 <ul>
@@ -14,7 +13,7 @@
 <h2>Resources (<%= @feature.links.count %>)</h2>
 <ul>
   <% @feature.links.each do |l| %>
-    <li><%= l.name %>: <a href="<%= l.path %>"><%= l.path %></a></li>
+    <li><%= l.name %>: <a href="<%= l.path %>"><%= l.path %></a></li> 
   <% end %>
 </ul>
 
@@ -24,6 +23,3 @@
     <li><%= a.name %></li>
   <% end %>
 </ul>
-
-<%= link_to 'Edit', edit_feature_path(@feature) %> |
-<%= link_to 'Back', features_path %>

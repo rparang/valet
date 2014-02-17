@@ -82,7 +82,7 @@ def deliver_email(email_address, feature)
   #mail = Mail.new
   #mail.add_file(Valet::Application.assets.find_asset('rails.png').pathname.to_s)
 
-  template = File.read("#{Rails.root}/app/views/features/show.html.erb")
+  template = File.read("#{Rails.root}/app/views/emails/features/show.html.erb")
   @feature = feature
   renderer = ERB.new(template)
   result = renderer.result(binding)
