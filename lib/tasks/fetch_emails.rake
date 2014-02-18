@@ -4,22 +4,22 @@ task :fetch_emails => :environment do
 end
 
 def retrieve_emails
-  # Mail.defaults do
-  #   delivery_method(:smtp, {  :address              => "smtp.gmail.com",
-  #                             :port                 => 587,
-  #                             :domain               => 'localhost:3000',
-  #                             :user_name            => 'featurevalet',
-  #                             :password             => 'temporary1337',
-  #                             :authentication       => 'plain',
-  #                             :enable_starttls_auto => true  }
-  #                   )
+  Mail.defaults do
+    delivery_method(:smtp, {  :address              => "smtp.gmail.com",
+                              :port                 => 587,
+                              :domain               => 'pure-sands-7079.herokuapp.com',
+                              :user_name            => 'featurevalet',
+                              :password             => 'temporary1337',
+                              :authentication       => 'plain',
+                              :enable_starttls_auto => true  }
+                    )
 
-  #   retriever_method :imap, { :address    => "imap.gmail.com",
-  #                             :port       => 993,
-  #                             :user_name  => 'featurevalet',
-  #                             :password   => 'temporary1337',
-  #                             :enable_ssl => true }
-  # end
+    retriever_method :imap, { :address    => "imap.gmail.com",
+                              :port       => 993,
+                              :user_name  => 'featurevalet',
+                              :password   => 'temporary1337',
+                              :enable_ssl => true }
+  end
 
   #feature = Feature.first
 
