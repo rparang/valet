@@ -7,8 +7,8 @@ def retrieve_emails
   Mail.defaults do
     delivery_method(:smtp, {  :address              => "smtp.gmail.com",
                               :port                 => 587,
-                              :domain               => 'pure-sands-7079.herokuapp.com',
-                              :user_name            => 'featurevalet',
+                              :domain               => 'herokuapp.com',
+                              :user_name            => 'featurevalet@gmail.com',
                               :password             => 'temporary1337',
                               :authentication       => 'plain',
                               :enable_starttls_auto => true  }
@@ -16,7 +16,7 @@ def retrieve_emails
 
     retriever_method :imap, { :address    => "imap.gmail.com",
                               :port       => 993,
-                              :user_name  => 'featurevalet',
+                              :user_name  => 'featurevalet@gmail.com',
                               :password   => 'temporary1337',
                               :enable_ssl => true }
   end
