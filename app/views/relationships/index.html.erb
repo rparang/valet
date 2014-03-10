@@ -1,0 +1,23 @@
+<h1>Listing relationships</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>User Email</th>
+    <th>Feature ID</th>
+    <th>Feature Title</th>
+    <th></th>
+  </tr>
+
+<% if @relationships %>
+    <% @relationships.each do |rel| %>
+      <tr>
+        <td><%= rel.id %></td>
+        <td><%= rel.user.email %></td>
+        <td><%= rel.feature_id %></td>
+        <td><%= rel.feature.title %></td>
+        <td><%= link_to 'Destroy', rel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+<% end %>
+</table>
