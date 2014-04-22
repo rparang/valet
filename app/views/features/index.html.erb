@@ -1,40 +1,37 @@
 <h1>Listing features</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Code</th>
-    <th>Description</th>
-    <th>Attachments</th>
-    <th>Links</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<table class="pure-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Code</th>
+      <th>Launch Date String</th>
+      <th>Attachments</th>
+      <th>Links</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>  
 <% if @features %>
     <% @features.each do |feature| %>
       <tr>
-        <td><%= feature.title %></td>
+        <td><a href="<%= feature_path(feature.id) %>"><%= feature.title %></a></td>
         <td><%= feature.code %></td>
-        <td><%= raw feature.description %></td>
+        <td><%= feature.launch_date_string %></td>
         <td>
-            <table>
-            <tr>
+            <ul>
             <% feature.attachments.each do |a| %>
-                <td><%= a.name %></td>
+                <li><%= a.name %></li>
             <% end %>
-            </tr>
-            </table>
+            </ul>
         </td>
         <td>
-            <table>
-            <tr>
+            <ul>
             <% feature.links.each do |l| %>
-                <td><%= l.name %></td>
+                <li><%= l.name %></li>
             <% end %>
-            </tr>
-            </table>
+            <ul>
         </td>
         <td><%= link_to 'Show', feature %></td>
         <td><%= link_to 'Edit', edit_feature_path(feature) %></td>

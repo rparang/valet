@@ -11,7 +11,7 @@
 #
 
 class Feature < ActiveRecord::Base
-  attr_accessible :description, :title, :code
+  attr_accessible :description, :title, :code, :launch_date_string, :launch_date
 
   has_many :relationships, :dependent => :destroy
   has_many :users, :through => :relationships
