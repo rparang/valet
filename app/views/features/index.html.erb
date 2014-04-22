@@ -1,6 +1,6 @@
 <h1>Listing features</h1>
 
-<table class="pure-table">
+<table class="features pure-table pure-table-bordered">
   <thead>
     <tr>
       <th>Title</th>
@@ -8,8 +8,6 @@
       <th>Launch Date String</th>
       <th>Attachments</th>
       <th>Links</th>
-      <th></th>
-      <th></th>
       <th></th>
     </tr>
   </thead>  
@@ -33,9 +31,7 @@
             <% end %>
             <ul>
         </td>
-        <td><%= link_to 'Show', feature %></td>
-        <td><%= link_to 'Edit', edit_feature_path(feature) %></td>
-        <td><%= link_to 'Destroy', feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_feature_path(feature) %> | <%= link_to 'Destroy', feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
 <% end %>
